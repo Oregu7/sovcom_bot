@@ -1,4 +1,5 @@
 const { SessionModel } = require("../models");
+const moment = require("moment");
 
 const moduleContext = {
     lastMessageDate: 0,
