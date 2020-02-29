@@ -4,7 +4,7 @@ require("dotenv").config();
 const REQUIRED_VARIABLES = [
     "NODE_ENV",
     "BOT_TOKEN",
-    "BOT_USERNAME",
+    "BOT_ID",
     "DB_NAME",
     "DB_USER",
     "DB_PASSWORD",
@@ -19,7 +19,7 @@ REQUIRED_VARIABLES.forEach((name) => {
 module.exports = {
     env: process.env.NODE_ENV,
     bot: {
-        username: process.env.BOT_USERNAME,
+        id: process.env.BOT_ID,
         token: process.env.BOT_TOKEN,
     },
     database: {
