@@ -1,4 +1,9 @@
-module.exports = (ctx) => {
+const { MessageModel } = require("../models");
+
+module.exports = async(ctx) => {
     ctx.data.context = "";
-    return ctx.reply("Я тебя не понимаю");
+    const message = "Я тебя не понимаю";
+    // send && save bot message
+    const { message_id: messageId } = await ctx.reply(message);
+    return MessageModel.saveBotMessage(ctx, message, messageId);
 };

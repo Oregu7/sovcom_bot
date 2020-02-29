@@ -9,7 +9,7 @@ bot.use(middlewares.session);
 bot.use(middlewares.logMessage);
 bot.use(middlewares.context);
 // commands
-
+bot.command("stat", handlers.stat);
 // patterns
 bot.hears(/^😀|😄|😁|😆|😂|🤣|😊|🤩|😃|🥳$/u, handlers.emoji("joy"));
 bot.hears(/^🙄|😞|😔|😟|😕|🙁|☹|😩|😫|😓|😒$/u, handlers.emoji("sadness"));
