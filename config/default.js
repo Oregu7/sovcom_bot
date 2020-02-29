@@ -14,12 +14,9 @@ REQUIRED_VARIABLES.forEach((name) => {
         throw new Error(`Environment variable ${name} is missing`);
     }
 });
-// загружаем компоненты
-const constants = require("./constants");
 
 // шарим конфиг
 module.exports = {
-    constants,
     env: process.env.NODE_ENV,
     bot: {
         username: process.env.BOT_USERNAME,

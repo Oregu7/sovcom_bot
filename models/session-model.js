@@ -9,6 +9,6 @@ const SessionModel = db.define("session", {
     },
     start_time: Sequelize.DATE,
     end_time: Sequelize.DATE,
-}, { timestamps: false, freezeTableName: true });
+}, { timestamps: false });
 
 module.exports = SessionModel;

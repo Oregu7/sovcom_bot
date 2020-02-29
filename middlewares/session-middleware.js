@@ -10,11 +10,11 @@ const minuteMilliseconds = 1000 * 60;
 setInterval((ctx) => {
     const currentDate = Date.now();
     if (currentDate - ctx.lastMessageDate >= minuteMilliseconds) {
-        const session = ctx.session;
+        if (ctx.session) {
+            console.log(`close session: ${ctx.session.id}`);
+            SessionModel.update({ end_time: new Date() }, { where: { id: ctx.session.id } });
+        }
         ctx.session = null;
-
-        session.end_time = new Date();
-        session.save();
     }
 }, minuteMilliseconds, moduleContext);
 

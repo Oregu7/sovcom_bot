@@ -1,10 +1,14 @@
 const { Answer, AnswerCollection } = require("../components/answer");
+const defaultAnswers = require("../data/default_answers.json");
+const joyAnswers = require("../data/joy_answers.json");
+const sadnessAnswers = require("../data/sadness_answers.json");
+const angerAnswers = require("../data/anger_answers.json");
 
 const answers = new AnswerCollection(
-    new Answer([], [], []),
-    new Answer([], [], []),
-    new Answer([], [], []),
-    new Answer([], [], []),
+    new Answer(...defaultAnswers),
+    new Answer(...joyAnswers),
+    new Answer(...sadnessAnswers),
+    new Answer(...angerAnswers),
 );
 
 module.exports = (emojiType) => (ctx) => {

@@ -12,6 +12,6 @@ const MessageModel = db.define("message", {
     session_id: Sequelize.INTEGER(11),
     text: Sequelize.STRING(4000),
     date: Sequelize.DATE,
-}, { timestamps: false, freezeTableName: true });
+}, { timestamps: false });
 
 module.exports = MessageModel;
