@@ -12,9 +12,9 @@ const SessionModel = db.define("session", {
 }, { timestamps: false });
 
 SessionModel.getAverageTimeAndCount = async function() {
-    const query = `SELECT count(*) as Count, avg(end_time-start_time) as AvgTime
+    const query = `SELECT count(*) as Count, avg(TIMESTAMPDIFF(SECOND, start_time, end_time)) as AvgTime
     FROM sessions 
-    WHERE end_time != '0000-00-00 00:00:00' AND start_time >= date_sub(now(), INTERVAL 1 HOUR)`;
+    WHERE end_time > start_time AND start_time >= date_sub(now(), INTERVAL 1 HOUR)`;
 
     const [result] = await db.query(query);
     return result[0];
