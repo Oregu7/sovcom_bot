@@ -1,3 +1,4 @@
+const Extra = require("telegraf/extra");
 const { Answer, AnswerCollection } = require("../components/answer");
 const { MessageModel } = require("../models");
 
@@ -19,6 +20,6 @@ module.exports = (emojiType) => async(ctx) => {
     // set context
     ctx.data.context = emojiType;
     // send && save bot message
-    const { message_id: messageId } = await ctx.reply(message);
+    const { message_id: messageId } = await ctx.reply(message, Extra.inReplyTo(ctx.message.message_id));
     return MessageModel.saveBotMessage(ctx, message, messageId);
 };
