@@ -1,5 +1,4 @@
 const { SessionModel } = require("../models");
-const moment = require("moment");
 
 const moduleContext = {
     lastMessageDate: 0,
@@ -22,7 +21,8 @@ setInterval((ctx) => {
 module.exports = async(ctx, next) => {
     moduleContext.lastMessageDate = Date.now();
     if (!moduleContext.session) {
-        moduleContext.session = await SessionModel.create({ start_time: new Date() });
+        let date = new Date();
+        moduleContext.session = await SessionModel.create({ start_time: date, end_time: date });
     }
     ctx.session = moduleContext.session;
 
